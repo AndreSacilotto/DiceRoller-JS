@@ -1,0 +1,73 @@
+
+
+// ---------- GRID ----------
+
+.grid-item {
+    background-color: wheat;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.layout {
+	display: grid;
+	width: auto;
+	height: 100vh;
+	grid-template:
+		"header header header" 10%
+		"leftside tophead topright" 15%
+		"leftside mid rightside" 65%
+		". . footer" 5%
+		/ 25% 48% 25%;
+	gap: 1vw;
+	justify-content: start;
+	//align-content: center;
+}
+
+#header {
+	grid-area: 'header';
+}
+
+#top-head {
+    grid-area: tophead;
+}
+
+#top-right {
+	grid-area: topright;
+}
+
+#mid {
+	grid-area: mid;
+}
+
+#left-side {
+	grid-area: leftside;
+}
+
+#right-side {
+	grid-area: rightside;
+}
+
+#footer {
+	grid-area: footer;
+}
+
+.layout-simple{
+    display: grid; 
+    justify-content: start;
+}
+
+// ---------- FOOTER ----------
+
+#footerImage {
+	vertical-align: middle;
+	width: calc(10px + 2vw);
+	height: auto;
+}
+
+#footerText {
+	display: inline;
+	font-size: calc(0.55em + 0.3vw);
+	margin-left: 20%;
+}

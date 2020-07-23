@@ -1,0 +1,25 @@
+.layout-historic{
+    display: grid;
+    flex-direction: row;
+}
+
+.hist-item{
+    padding: 2% 5%;
+    border-bottom: 1px solid $gray;
+    white-space: nowrap;
+    &:hover{
+        background-color: $gray;
+    }
+    & button{
+        @extend .btn-close;
+    }
+    & span{
+       color: red;
+    }
+    & span[text="exp"]{
+        color: black;
+    }
+    & span[text="result"]{
+        color: $gray;
+    }
+}

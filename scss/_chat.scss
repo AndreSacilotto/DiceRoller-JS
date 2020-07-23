@@ -1,0 +1,27 @@
+#username{
+    width: $container-width;
+}
+
+.chat-item{
+    padding: 2% 5%;
+    border-bottom: 1px solid $gray;
+    white-space: nowrap;
+    &:hover{
+        background-color: $light-gray;
+    }
+    & span{
+       text-overflow: ellipsis;
+    }
+    & span[text="name"]{
+        color: pink;
+    }
+    & span[text="date"]{
+        color: purple;
+    }
+    & span[text="exp"]{
+        color: black;
+    }
+    & span[text="result"]{
+        color: $gray;
+    }
+}

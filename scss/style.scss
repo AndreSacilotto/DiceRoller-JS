@@ -1,0 +1,13 @@
+
+$note-color: #fdfbee;
+$light-gray: #f1f1f1;
+$gray: #dddddd;
+
+$container-height: 80%;
+$container-width: 80%;
+
+@import "_basic.scss";
+@import "_layout.scss";
+@import "_calculator.scss";
+@import "_historic.scss";
+@import "_chat.scss";

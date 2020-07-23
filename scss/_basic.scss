@@ -1,0 +1,76 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+body{
+    overflow: hidden;
+}
+
+button, input[type="submit"], input[type="button"]{
+    cursor: pointer;
+    border: none;
+    background-color: ivory;
+}
+
+.full{
+    height: 100%;
+    width: 100%;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-middle {
+	vertical-align: middle;
+}
+
+.block {
+    display: block;
+}
+
+.text-white {
+	color: white;
+}
+
+.text-gray {
+	color: $gray;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.container {
+	box-sizing: border-box;
+	background-color: white;
+	border: unset;
+	width: $container-width;
+    height: $container-height;
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.selectable{
+    color: red;
+    &:hover{
+        background-color: $light-gray;
+    }
+}
+
+.text-header{
+    text-align: center;
+    width: $container-width;
+    border: 1px solid gray;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+}
+
+.btn-close{
+    float: right;
+}

@@ -1,0 +1,240 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+button, input[type="submit"], input[type="button"] {
+  cursor: pointer;
+  border: none;
+  background-color: ivory;
+}
+
+.full, .submit-textbox, .btn-calc {
+  height: 100%;
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-middle {
+  vertical-align: middle;
+}
+
+.block {
+  display: block;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-gray {
+  color: #dddddd;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.container {
+  box-sizing: border-box;
+  background-color: white;
+  border: unset;
+  width: 80%;
+  height: 80%;
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.selectable {
+  color: red;
+}
+
+.selectable:hover {
+  background-color: #f1f1f1;
+}
+
+.text-header {
+  text-align: center;
+  width: 80%;
+  border: 1px solid gray;
+  background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
+.btn-close, .hist-item button {
+  float: right;
+}
+
+.grid-item {
+  background-color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.layout {
+  display: grid;
+  width: auto;
+  height: 100vh;
+  grid-template: "header header header" 10% "leftside tophead topright" 15% "leftside mid rightside" 65% ". . footer" 5% / 25% 48% 25%;
+  gap: 1vw;
+  justify-content: start;
+}
+
+#header {
+  grid-area: 'header';
+}
+
+#top-head {
+  grid-area: tophead;
+}
+
+#top-right {
+  grid-area: topright;
+}
+
+#mid {
+  grid-area: mid;
+}
+
+#left-side {
+  grid-area: leftside;
+}
+
+#right-side {
+  grid-area: rightside;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+.layout-simple {
+  display: grid;
+  justify-content: start;
+}
+
+#footerImage {
+  vertical-align: middle;
+  width: calc(10px + 2vw);
+  height: auto;
+}
+
+#footerText {
+  display: inline;
+  font-size: calc(0.55em + 0.3vw);
+  margin-left: 20%;
+}
+
+.submit-textbox {
+  font-size: calc(1em + 30%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-textbox input {
+  border: none;
+  height: 30%;
+  margin: 0;
+}
+
+.submit-textbox input[type="text"] {
+  color: red;
+  width: 80%;
+}
+
+.submit-textbox input[type="submit"] {
+  color: blue;
+  width: 10%;
+}
+
+.layout-mid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: .6%;
+  grid-template-columns: repeat(6, 16%);
+}
+
+.layout-topright {
+  display: grid;
+  gap: 3%;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 30%);
+}
+
+.layout-historic {
+  display: grid;
+  flex-direction: row;
+}
+
+.hist-item {
+  padding: 2% 5%;
+  border-bottom: 1px solid #dddddd;
+  white-space: nowrap;
+}
+
+.hist-item:hover {
+  background-color: #dddddd;
+}
+
+.hist-item span {
+  color: red;
+}
+
+.hist-item span[text="exp"] {
+  color: black;
+}
+
+.hist-item span[text="result"] {
+  color: #dddddd;
+}
+
+#username {
+  width: 80%;
+}
+
+.chat-item {
+  padding: 2% 5%;
+  border-bottom: 1px solid #dddddd;
+  white-space: nowrap;
+}
+
+.chat-item:hover {
+  background-color: #f1f1f1;
+}
+
+.chat-item span {
+  text-overflow: ellipsis;
+}
+
+.chat-item span[text="name"] {
+  color: pink;
+}
+
+.chat-item span[text="date"] {
+  color: purple;
+}
+
+.chat-item span[text="exp"] {
+  color: black;
+}
+
+.chat-item span[text="result"] {
+  color: #dddddd;
+}
+/*# sourceMappingURL=style.css.map */
