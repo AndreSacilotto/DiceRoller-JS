@@ -1,14 +1,22 @@
 {
-  "name": "diceroller",
-  "version": "1.0.0",
-  "description": "]",
-  "main": "Main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Andre Sacilotto",
-  "license": "MIT",
-  "dependencies": {
-    "node-sass": "^4.14.1"
-  }
+    "name": "diceroller",
+    "version": "1.0.0",
+    "description": "Rpg dice roller app with global dice chat",
+    "main": "src/server/Server.js",
+    "scripts": {
+        "start": "node server",
+        "dev": "nodemon server"
+    },
+    "type": "module",
+    "author": "Andre Sacilotto",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "moment": "^2.27.0",
+        "node-sass": "^4.14.1",
+        "socket.io": "^2.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
 }

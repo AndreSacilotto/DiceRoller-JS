@@ -8,7 +8,7 @@
     border-bottom: 1px solid $gray;
     white-space: nowrap;
     &:hover{
-        background-color: $gray;
+        background-color: $light-gray;
     }
     & button{
         @extend .btn-close;

@@ -1,0 +1,59 @@
+.submit-textbox {
+    @extend .full;
+    font-size: calc(1em + 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & input{
+        border: none;
+        height: 40%;
+    }
+    & input[type="text"]{
+        color: black;
+        padding-left: 2%;
+        width: 80%;
+    }
+    & input[type="submit"]{
+        color: red;
+        background-color: black;
+        width: 10%;
+    }
+}
+
+.layout-topright{
+    display: grid;
+    gap: 3%; 
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 30%);
+}
+
+.layout-mid{
+    display: grid; 
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(6, 16%);
+    & input[type="number"], button{
+        @extend .full;
+        box-sizing: border-box;
+    }
+    & input[type="number"]{
+        background-color: white;
+    }
+    & button[exp^="dice"]{
+        background-color: pink;
+    }    
+    & button[exp="inner"]{
+        background-color: red;
+    }
+    & button[exp="operator"]{
+        background-color: cyan;
+    }
+    & button[exp="roller"], button[exp="clear"], button[exp="del"]{
+        background-color: brown;
+        @extend .text-white;
+    }    
+    & button:hover{
+        border: 1px solid black;
+    }
+}

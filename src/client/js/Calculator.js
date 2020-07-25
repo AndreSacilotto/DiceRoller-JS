@@ -1,7 +1,7 @@
 //1D4 + AD6 + (D8 * 3D12) + 12D20 + 1D100 + 1 + 10 + 100 / 1000 - 60
 //1D4+D6+(D8*3D12)+12D20+1D100+1+10+100/1000-60
 
-export class Calculator{
+export default class Calculator{
     constructor(stringExpression, invalidFunc)
     {
         this.fullExp = stringExpression;
@@ -21,7 +21,7 @@ export class Calculator{
     }
 
     SimplifyExpression(){
-        let newExp = this.fullExp.replace(/[^-+/*()\dD]/gi, '');        
+        let newExp = this.fullExp.replace(/[^-+/*()\dD\.,]/gi, '');        
         if (newExp.charAt(0) !== '+' && newExp.charAt(0) !== '-')
             newExp = '+' + newExp;
         return newExp;
@@ -31,12 +31,13 @@ export class Calculator{
         let dCount = 0, parenthes = 0;
         for (let i = 0; i < this.fullExp.length; i++) 
         {
-            let c = this.fullExp.charAt(i);
-            switch (c) {
+            switch (this.fullExp.charAt(i)) {
                 case 'd': dCount++; continue;
                 case 'D': dCount++; continue;
                 case '(': parenthes--; continue;        
                 case ')': parenthes++; continue;
+                case '.': return false;
+                case ',': return false;
             }
         }
 

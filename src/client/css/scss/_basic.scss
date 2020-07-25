@@ -3,6 +3,7 @@
 	padding: 0;
     margin: 0;
     outline: none;
+    border: none;
 }
 
 body{
@@ -11,8 +12,7 @@ body{
 
 button, input[type="submit"], input[type="button"]{
     cursor: pointer;
-    border: none;
-    background-color: ivory;
+    background-color: whitesmoke;
 }
 
 .full{

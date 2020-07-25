@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   outline: none;
+  border: none;
 }
 
 body {
@@ -11,11 +12,10 @@ body {
 
 button, input[type="submit"], input[type="button"] {
   cursor: pointer;
-  border: none;
-  background-color: ivory;
+  background-color: whitesmoke;
 }
 
-.full, .submit-textbox, .btn-calc {
+.full, .submit-textbox, .layout-mid input[type="number"], .layout-mid button {
   height: 100%;
   width: 100%;
 }
@@ -32,7 +32,7 @@ button, input[type="submit"], input[type="button"] {
   display: block;
 }
 
-.text-white {
+.text-white, .layout-mid button[exp="roller"], .layout-mid button[exp="clear"], .layout-mid button[exp="del"] {
   color: white;
 }
 
@@ -147,26 +147,19 @@ button, input[type="submit"], input[type="button"] {
 
 .submit-textbox input {
   border: none;
-  height: 30%;
-  margin: 0;
+  height: 40%;
 }
 
 .submit-textbox input[type="text"] {
-  color: red;
+  color: black;
+  padding-left: 2%;
   width: 80%;
 }
 
 .submit-textbox input[type="submit"] {
-  color: blue;
+  color: red;
+  background-color: black;
   width: 10%;
-}
-
-.layout-mid {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  gap: .6%;
-  grid-template-columns: repeat(6, 16%);
 }
 
 .layout-topright {
@@ -175,6 +168,41 @@ button, input[type="submit"], input[type="button"] {
   justify-content: center;
   align-items: center;
   grid-template-columns: repeat(3, 30%);
+}
+
+.layout-mid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(6, 16%);
+}
+
+.layout-mid input[type="number"], .layout-mid button {
+  box-sizing: border-box;
+}
+
+.layout-mid input[type="number"] {
+  background-color: white;
+}
+
+.layout-mid button[exp^="dice"] {
+  background-color: pink;
+}
+
+.layout-mid button[exp="inner"] {
+  background-color: red;
+}
+
+.layout-mid button[exp="operator"] {
+  background-color: cyan;
+}
+
+.layout-mid button[exp="roller"], .layout-mid button[exp="clear"], .layout-mid button[exp="del"] {
+  background-color: brown;
+}
+
+.layout-mid button:hover {
+  border: 1px solid black;
 }
 
 .layout-historic {
@@ -189,7 +217,7 @@ button, input[type="submit"], input[type="button"] {
 }
 
 .hist-item:hover {
-  background-color: #dddddd;
+  background-color: #f1f1f1;
 }
 
 .hist-item span {

@@ -1,5 +1,6 @@
-import { Calculator } from "./Calculator.js"
+import Calculator from "./Calculator.js"
 
+var socket = io();
 
 // ---------- GLOBAL VARS ----------
 
@@ -11,7 +12,7 @@ var numInputDom = document.getElementById('numberInput');
 
 // ---------- EVENTS ----------
 document.querySelectorAll("[exp='roller']").forEach(btn => btn.onclick = () => CalculateExpression());
-document.querySelectorAll("[exp='inner']").forEach(btn => btn.onclick = () => AddToExpression(btn.innerHTML));
+document.querySelectorAll("[exp='inner'],[exp='operator']").forEach(btn => btn.onclick = () => AddToExpression(btn.innerHTML));
 document.querySelectorAll("[exp='dice']").forEach(btn => btn.onclick = () => AddToExpression(numInputDom.value + btn.innerHTML));
 
 document.querySelector("[exp='diceX']").onclick = () => AddToExpression(numInputDom.value + "D");
@@ -42,6 +43,7 @@ function ClearExpression(str)
 {
     savedExp = expressionDom.value;
     expressionDom.value = String();
+    ResetResults();
     //TODO display undo btn (during X) times and after that undisplay and set savedExp to null;
 }
 
@@ -50,15 +52,17 @@ function AddToExpression(str)
     expressionDom.value += str;
 }
 
-function CalculateExpression(goHist = true)
+function CalculateExpression(isRecreation = false)
 {
     const exp = expressionDom.value;
     if (exp !== "") {
         var calc = new Calculator(exp, () => console.log("Incorrect Formula"));
         if (calc.validExp){
             SetResults(calc.GetValues());
-            if (goHist) 
+            if (!isRecreation){
                 AddHist();
+                SendMessage();
+            }
         }
     }
 }
@@ -72,14 +76,24 @@ function SetResults(result)
     document.getElementById('result-max').value = result.maxRoll;
 }
 
+function ResetResults()
+{
+    resultDom.value = "";
+    document.getElementById('result-half').value = "";
+    document.getElementById('result-onethird').value = "";
+    document.getElementById('result-min').value = "";
+    document.getElementById('result-max').value = "";
+}
+
 function ReCreate(expElement)
 {
     expressionDom.value = expElement.innerHTML;
-    CalculateExpression(false);
+    ResetResults();
+    //CalculateExpression(true);
 }
 
 // ---------- HISTORIC ----------
-const histArr = [];
+//const histArr = [];
 
 function AddHist()
 {
@@ -113,25 +127,42 @@ function RemoveHist(el)
 }
 
 // ---------- CHAT ----------
+//const chatArr = [];
 
-function NewMessage()
+function SendMessage()
 {
+    const message = {
+        name: usernameDom.value, 
+        data: null,
+        result: resultDom.value, 
+        exp: expressionDom.value
+    }
+    socket.emit('sendMessage', message);
+}
+
+socket.on('newMessage', (message) => {
+    SetMessage(message.name, message.date, message.result, message.exp);
+});
+
+function SetMessage(username, date, nbResult, expression)
+{
+    console.log(date);
     const chatContainer = document.getElementById("right-side").getElementsByClassName("container")[0];
     const newEl = document.createElement("div");
-
+    newEl.className = "chat-item";
     const name = document.createElement("span");
     name.setAttribute("text", "name");
     const dt = document.createElement("span");
-    dt.setAttribute("text", "data");
+    dt.setAttribute("text", "date");
     const result = document.createElement("span");
     result.setAttribute("text", "result");
     const exp = document.createElement("span");
     exp.setAttribute("text", "exp");
 
-    name.innerHTML = usernameDom.value;    
-    dt.innerHTML = Date();
-    result.innerHTML = resultDom.value;
-    exp.innerHTML = expressionDom.value;
+    name.innerHTML = username;    
+    dt.innerHTML = date;
+    result.innerHTML = nbResult;
+    exp.innerHTML = expression;
 
     newEl.ondblclick = () => ReCreate(exp); 
 
