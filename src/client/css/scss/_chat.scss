@@ -6,6 +6,9 @@
     padding: 2% 5%;
     border-bottom: 1px solid $gray;
     white-space: nowrap;
+    display: grid;
+    grid-template-columns: 35% auto;
+
     &:hover{
         background-color: $light-gray;
     }

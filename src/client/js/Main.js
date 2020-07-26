@@ -1,8 +1,15 @@
 import Calculator from "./Calculator.js"
 
-var socket = io();
-
 // ---------- GLOBAL VARS ----------
+try{
+    var socket = io();
+
+    socket.on('newMessage', (message) => {
+        SetMessage(message.name, message.date, message.result, message.exp);
+    });
+} catch{
+    console.log("No server!!")
+}
 
 var usernameDom = document.getElementById('username');
 var expressionDom = document.getElementById('expression');
@@ -11,6 +18,7 @@ var resultDom = document.getElementById('result');
 var numInputDom = document.getElementById('numberInput');
 
 // ---------- EVENTS ----------
+
 document.querySelectorAll("[exp='roller']").forEach(btn => btn.onclick = () => CalculateExpression());
 document.querySelectorAll("[exp='inner'],[exp='operator']").forEach(btn => btn.onclick = () => AddToExpression(btn.innerHTML));
 document.querySelectorAll("[exp='dice']").forEach(btn => btn.onclick = () => AddToExpression(numInputDom.value + btn.innerHTML));
@@ -137,12 +145,10 @@ function SendMessage()
         result: resultDom.value, 
         exp: expressionDom.value
     }
-    socket.emit('sendMessage', message);
+    
+    if(io)
+        socket.emit('sendMessage', message);
 }
-
-socket.on('newMessage', (message) => {
-    SetMessage(message.name, message.date, message.result, message.exp);
-});
 
 function SetMessage(username, date, nbResult, expression)
 {
@@ -168,7 +174,6 @@ function SetMessage(username, date, nbResult, expression)
 
     newEl.appendChild(name);
     newEl.appendChild(dt);
-    newEl.appendChild(document.createElement("br"));
     newEl.appendChild(result);
     newEl.appendChild(exp);
     chatContainer.appendChild(newEl);

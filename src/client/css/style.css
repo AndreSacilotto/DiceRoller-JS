@@ -240,6 +240,8 @@ button, input[type="submit"], input[type="button"] {
   padding: 2% 5%;
   border-bottom: 1px solid #dddddd;
   white-space: nowrap;
+  display: grid;
+  grid-template-columns: 35% auto;
 }
 
 .chat-item:hover {
